@@ -1,5 +1,6 @@
-package com.example.storeproduct.security;//package com.example.orderbackend.security;
+package com.example.storeproduct.security;
 
+import com.example.storeproduct.security.filter.AuthenticatedServerFilter;
 import com.example.storeproduct.security.filter.AuthenticatedTokenFilter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,6 +17,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .anyRequest().authenticated()
             .and()
+                .addFilterBefore(new AuthenticatedServerFilter(), BasicAuthenticationFilter.class)
                 .addFilterBefore(new AuthenticatedTokenFilter(), BasicAuthenticationFilter.class)
             .csrf()
                 .disable()
