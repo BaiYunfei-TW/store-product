@@ -10,7 +10,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.0.109:8079/eureka
+      defaultZone: http://127.0.0.1:8079/eureka
 
 server:
   port: 8090
